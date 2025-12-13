@@ -43,6 +43,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "b8e035a7-a3a3-4b8e-a679-1e664da5426b"
+      }
+    },
+    "owner": "monverse"
   }
 }
