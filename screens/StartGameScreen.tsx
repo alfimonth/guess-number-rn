@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginTop: 64,
     backgroundColor: "lightskyblue",
     borderRadius: 8,
-    padding: 12,
+    padding: 16,
     alignItems: "center",
 
     // android
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    gap: 6,
+    gap: 8,
   },
 
   numberInput: {

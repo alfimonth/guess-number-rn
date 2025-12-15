@@ -21,12 +21,13 @@ export default PrimaryButton;
 const styles = StyleSheet.create({
   outerButton: {
     backgroundColor: "darkblue",
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingVertical: 12,
     borderRadius: 99,
+    flex: 1,
+    alignItems: "center",
   },
   innerButton: {},
   buttonText: {
-    color: 'ghostwhite'
+    color: "ghostwhite",
   },
 });
