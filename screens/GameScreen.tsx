@@ -1,13 +1,106 @@
-import { StyleSheet, Text, View } from 'react-native'
+import PrimaryButton from "@/components/PrimaryButton";
+import Colors from "@/constants/colors";
+import { generateRandomBetween } from "@/utils/number";
+import { useEffect, useState } from "react";
+import { Alert, StyleSheet, Text, View } from "react-native";
 
-const GameScreen = () => {
+let minGuessBoundary = 1;
+let maxGuessBoundary = 99;
+
+const GameScreen = ({ userNumber }: { userNumber: number }) => {
+  const initialGuess = generateRandomBetween(1, 99, userNumber);
+  const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+  useEffect(() => {
+    console.log("Boundary: ", minGuessBoundary, " - ", maxGuessBoundary);
+    if (currentGuess === userNumber) {
+      Alert.alert("Game Over");
+    }
+  }, [currentGuess]);
+
+  const nextGuessHandler = (type: "higher" | "lower") => {
+    if (currentGuess === userNumber) return;
+    if (type === "lower") {
+      if ((currentGuess as number) < userNumber) {
+        Alert.alert("You lie");
+        return;
+      }
+      maxGuessBoundary = (currentGuess as number) - 1;
+    } else {
+      if ((currentGuess as number) > userNumber) {
+        Alert.alert("You lie");
+        return;
+      }
+      minGuessBoundary = (currentGuess as number) + 1;
+    }
+    const newGuess = generateRandomBetween(
+      minGuessBoundary,
+      maxGuessBoundary,
+      currentGuess as number
+    );
+
+    setCurrentGuess(newGuess);
+  };
   return (
-    <View>
-      <Text>GameScreen</Text>
+    <View style={styles.mainContainer}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Opponent's Guess</Text>
+      </View>
+      <View style={styles.guessContainer}>
+        <Text style={styles.guesText}>{currentGuess}</Text>
+      </View>
+      <View style={styles.bottomContainer}>
+        <PrimaryButton
+          onPress={() => {
+            nextGuessHandler("lower");
+          }}
+        >
+          -
+        </PrimaryButton>
+        <PrimaryButton
+          onPress={() => {
+            nextGuessHandler("higher");
+          }}
+        >
+          +
+        </PrimaryButton>
+      </View>
     </View>
-  )
-}
+  );
+};
 
-export default GameScreen
+export default GameScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  mainContainer: {
+    paddingHorizontal: 20,
+    alignItems: "center",
+  },
+  titleContainer: {
+    borderWidth: 1,
+    alignItems: "center",
+    paddingVertical: 4,
+    borderColor: Colors.white,
+    marginBottom: 20,
+    width: "100%",
+  },
+  title: {
+    fontSize: 32,
+    color: Colors.white,
+  },
+  guessContainer: {
+    alignItems: "center",
+    padding: 12,
+  },
+  guesText: {
+    fontSize: 64,
+    color: Colors.white,
+    fontWeight: 600,
+  },
+  bottomContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 12,
+    gap: 24,
+  },
+});
