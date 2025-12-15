@@ -23,12 +23,6 @@ const StartGameScreen = () => {
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    backgroundColor: "ghostwhite",
-    alignItems: "center",
-    paddingHorizontal: 16,
-  },
   inputContainer: {
     marginHorizontal: 12,
     marginTop: 64,
