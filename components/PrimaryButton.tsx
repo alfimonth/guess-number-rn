@@ -9,7 +9,11 @@ type PrimaryButtonProps = {
 const PrimaryButton = ({ children, onPress }: PrimaryButtonProps) => {
   return (
     <View style={styles.outerButton}>
-      <Pressable onPress={onPress} style={styles.innerButton}>
+      <Pressable
+        android_ripple={{ color: "blue" }}
+        onPress={onPress}
+        style={({ pressed }) => [styles.innerButton, pressed && styles.pressed]}
+      >
         <Text style={styles.buttonText}>{children}</Text>
       </Pressable>
     </View>
@@ -20,14 +24,26 @@ export default PrimaryButton;
 
 const styles = StyleSheet.create({
   outerButton: {
+    borderRadius: 99,
+    overflow: "hidden",
+    flex: 1,
+  },
+
+  innerButton: {
     backgroundColor: "darkblue",
     paddingVertical: 12,
-    borderRadius: 99,
-    flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
   },
-  innerButton: {},
+
+  pressed: {
+    backgroundColor: "blue",
+    opacity: 0.75,
+  },
+
   buttonText: {
     color: "ghostwhite",
+    fontWeight: "600",
   },
 });
