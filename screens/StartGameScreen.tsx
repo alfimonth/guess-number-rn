@@ -3,7 +3,11 @@ import { warningAlert } from "@/utils/alert";
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
-const StartGameScreen = () => {
+const StartGameScreen = ({
+  onConfirmNumber,
+}: {
+  onConfirmNumber: (number: number) => void;
+}) => {
   const [enteredNumber, setEnteredNumber] = useState("");
 
   const confirmHandler = () => {
@@ -28,6 +32,8 @@ const StartGameScreen = () => {
       invalidNumberAlert("Chosen number cannot be higher than 99");
       return;
     }
+
+    onConfirmNumber(chosenNumber);
   };
 
   const invalidNumberAlert = (text: string) => {
