@@ -1,18 +1,32 @@
-import { ReactNode } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { ReactNode } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
-type PrimaryButtonProps ={
-    children : ReactNode
-}
+type PrimaryButtonProps = {
+  children: ReactNode;
+  onPress: () => void;
+};
 
-const PrimaryButton = ({children}: PrimaryButtonProps) => {
+const PrimaryButton = ({ children, onPress }: PrimaryButtonProps) => {
   return (
-    <View>
-      <Text>{children}</Text>
+    <View style={styles.outerButton}>
+      <Pressable onPress={onPress} style={styles.innerButton}>
+        <Text style={styles.buttonText}>{children}</Text>
+      </Pressable>
     </View>
-  )
-}
+  );
+};
 
-export default PrimaryButton
+export default PrimaryButton;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  outerButton: {
+    backgroundColor: "darkblue",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 99,
+  },
+  innerButton: {},
+  buttonText: {
+    color: 'ghostwhite'
+  },
+});

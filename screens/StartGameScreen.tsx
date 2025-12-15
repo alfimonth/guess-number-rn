@@ -4,17 +4,17 @@ import { StyleSheet, TextInput, View } from "react-native";
 
 const StartGameScreen = () => {
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.numberInput}
-          maxLength={2}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <PrimaryButton>Reset</PrimaryButton>
-        <PrimaryButton>Confirm</PrimaryButton>
+    <View style={styles.inputContainer}>
+      <TextInput
+        style={styles.numberInput}
+        maxLength={2}
+        keyboardType="number-pad"
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+      <View style={styles.buttonContainer}>
+        <PrimaryButton onPress={() => {}}>Reset</PrimaryButton>
+        <PrimaryButton onPress={() => {}}>Confirm</PrimaryButton>
       </View>
     </View>
   );
@@ -30,11 +30,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   inputContainer: {
-    width: "100%",
+    marginHorizontal: 12,
     marginTop: 64,
     backgroundColor: "lightskyblue",
     borderRadius: 8,
     padding: 12,
+    alignItems: "center",
 
     // android
     elevation: 4,
@@ -45,9 +46,13 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOpacity: 0.25,
   },
+  buttonContainer: {
+    flexDirection: "row",
+    gap: 6,
+  },
 
   numberInput: {
-    color: "blue",
+    color: "darkblue",
     fontSize: 32,
     borderBottomColor: "blue",
     borderBottomWidth: 2,
@@ -55,6 +60,6 @@ const styles = StyleSheet.create({
     height: 50,
     marginVertical: 12,
     textAlign: "center",
-    fontWeight: '700'
+    fontWeight: "700",
   },
 });
