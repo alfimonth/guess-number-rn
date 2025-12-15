@@ -1,3 +1,4 @@
+import Card from "@/components/Card";
 import PrimaryButton from "@/components/PrimaryButton";
 import Colors from "@/constants/colors";
 import { generateRandomBetween } from "@/utils/number";
@@ -49,22 +50,25 @@ const GameScreen = ({ userNumber }: { userNumber: number }) => {
       <View style={styles.guessContainer}>
         <Text style={styles.guesText}>{currentGuess}</Text>
       </View>
-      <View style={styles.bottomContainer}>
-        <PrimaryButton
-          onPress={() => {
-            nextGuessHandler("lower");
-          }}
-        >
-          -
-        </PrimaryButton>
-        <PrimaryButton
-          onPress={() => {
-            nextGuessHandler("higher");
-          }}
-        >
-          +
-        </PrimaryButton>
-      </View>
+      <Card>
+        <Text>Higher or Lower?</Text>
+        <View style={styles.bottomContainer}>
+          <PrimaryButton
+            onPress={() => {
+              nextGuessHandler("lower");
+            }}
+          >
+            -
+          </PrimaryButton>
+          <PrimaryButton
+            onPress={() => {
+              nextGuessHandler("higher");
+            }}
+          >
+            +
+          </PrimaryButton>
+        </View>
+      </Card>
     </View>
   );
 };
