@@ -1,3 +1,4 @@
+import Colors from "@/constants/colors";
 import GameScreen from "@/screens/GameScreen";
 import StartGameScreen from "@/screens/StartGameScreen";
 import { LinearGradient } from "expo-linear-gradient";
@@ -17,7 +18,7 @@ export default function Index() {
   }
   return (
     <LinearGradient
-      colors={["darkblue", "lightskyblue", "ghostwhite"]}
+      colors={[Colors.secondary, Colors.primary, Colors.white]}
       style={styles.rootScreen}
     >
       <ImageBackground

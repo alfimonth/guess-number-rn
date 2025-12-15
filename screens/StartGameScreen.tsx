@@ -1,4 +1,5 @@
 import PrimaryButton from "@/components/PrimaryButton";
+import Colors from "@/constants/colors";
 import { warningAlert } from "@/utils/alert";
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginHorizontal: 24,
     marginTop: 64,
-    backgroundColor: "lightskyblue",
+    backgroundColor: Colors.primary,
     borderRadius: 8,
     padding: 16,
     alignItems: "center",
@@ -78,10 +79,10 @@ const styles = StyleSheet.create({
     elevation: 4,
 
     // ios
-    shadowColor: "black",
+    shadowColor: Colors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.35,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -89,9 +90,9 @@ const styles = StyleSheet.create({
   },
 
   numberInput: {
-    color: "darkblue",
+    color: Colors.secondary,
     fontSize: 32,
-    borderBottomColor: "blue",
+    borderBottomColor: Colors.dark,
     borderBottomWidth: 2,
     width: 50,
     height: 50,
