@@ -1,6 +1,6 @@
 import Card from "@/components/Card";
-import PrimaryButton from "@/components/PrimaryButton";
 import Title from "@/components/MainTitle";
+import PrimaryButton from "@/components/PrimaryButton";
 import Colors from "@/constants/colors";
 import { generateRandomBetween } from "@/utils/number";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,14 +10,20 @@ import { Alert, StyleSheet, Text, View } from "react-native";
 let minGuessBoundary = 1;
 let maxGuessBoundary = 99;
 
-const GameScreen = ({ userNumber }: { userNumber: number }) => {
+const GameScreen = ({
+  userNumber,
+  onGameOver,
+}: {
+  userNumber: number;
+  onGameOver: () => void;
+}) => {
   const initialGuess = generateRandomBetween(1, 99, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
   useEffect(() => {
     console.log("Boundary: ", minGuessBoundary, " - ", maxGuessBoundary);
     if (currentGuess === userNumber) {
-      Alert.alert("Game Over");
+      onGameOver();
     }
   }, [currentGuess]);
 
@@ -45,7 +51,7 @@ const GameScreen = ({ userNumber }: { userNumber: number }) => {
     setCurrentGuess(newGuess);
   };
   return (
-    <View style={styles.mainContainer}>
+    <>
       <Title text="Opponent's Guess" />
       <View style={styles.guessContainer}>
         <Text style={styles.guesText}>{currentGuess}</Text>
@@ -69,17 +75,13 @@ const GameScreen = ({ userNumber }: { userNumber: number }) => {
           </PrimaryButton>
         </View>
       </Card>
-    </View>
+    </>
   );
 };
 
 export default GameScreen;
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    paddingHorizontal: 20,
-    alignItems: "center",
-  },
   guessContainer: {
     alignItems: "center",
     padding: 12,

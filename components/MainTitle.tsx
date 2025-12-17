@@ -11,12 +11,12 @@ export default Title;
 
 const styles = StyleSheet.create({
   titleContainer: {
-    borderWidth: 1,
+    borderWidth: 2,
     alignItems: "center",
     paddingVertical: 4,
     borderColor: Colors.white,
-    marginBottom: 20,
-    width: "100%",
+    marginBottom: 32,
+    marginHorizontal: 30,
   },
   title: {
     fontSize: 32,

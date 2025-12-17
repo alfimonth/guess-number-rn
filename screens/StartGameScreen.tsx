@@ -48,7 +48,7 @@ const StartGameScreen = ({
   };
 
   return (
-    <View style={styles.mainContainer}>
+    <>
       <Title text="Guess My Number" />
       <Card>
         <Text>Input a number</Text>
@@ -66,17 +66,13 @@ const StartGameScreen = ({
           <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
         </View>
       </Card>
-    </View>
+    </>
   );
 };
 
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    paddingHorizontal: 20,
-    alignItems: "center",
-  },
   buttonContainer: {
     flexDirection: "row",
     gap: 8,
