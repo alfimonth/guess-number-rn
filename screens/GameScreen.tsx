@@ -6,11 +6,8 @@ import TipsText from "@/components/TipsText";
 import Colors from "@/constants/colors";
 import { generateRandomBetween } from "@/utils/number";
 import { Ionicons } from "@expo/vector-icons";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
-
-let minGuessBoundary = 1;
-let maxGuessBoundary = 99;
 
 const GameScreen = ({
   userNumber,
@@ -19,11 +16,18 @@ const GameScreen = ({
   userNumber: number;
   onGameOver: (rounds: number) => void;
 }) => {
+  const minBoundary = useRef(1);
+  const maxBoundary = useRef(99);
   const initialGuess = generateRandomBetween(1, 99, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [logNumbers, setLogNumbers] = useState<number[]>([
     initialGuess as number,
   ]);
+
+  useEffect(() => {
+    minBoundary.current = 1;
+    maxBoundary.current = 99;
+  }, []);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -33,28 +37,35 @@ const GameScreen = ({
 
   const nextGuessHandler = (type: "higher" | "lower") => {
     if (currentGuess === userNumber) return;
-    if (type === "lower") {
-      if ((currentGuess as number) < userNumber) {
-        Alert.alert("You lie");
-        return;
-      }
-      maxGuessBoundary = (currentGuess as number) - 1;
-    } else {
-      if ((currentGuess as number) > userNumber) {
-        Alert.alert("You lie");
-        return;
-      }
-      minGuessBoundary = (currentGuess as number) + 1;
-    }
-    const newGuess = generateRandomBetween(
-      minGuessBoundary,
-      maxGuessBoundary,
-      currentGuess as number
-    );
-    setLogNumbers((prev) => [...prev, newGuess as number]);
 
+    if (type === "lower") {
+      if (currentGuess < userNumber) {
+        Alert.alert("Don't lie!");
+        return;
+      }
+      maxBoundary.current = currentGuess - 1;
+    } else {
+      if (currentGuess > userNumber) {
+        Alert.alert("Don't lie!");
+        return;
+      }
+      minBoundary.current = currentGuess + 1;
+    }
+
+    if (minBoundary.current > maxBoundary.current) {
+      return; 
+    }
+
+    const newGuess = generateRandomBetween(
+      minBoundary.current,
+      maxBoundary.current,
+      currentGuess
+    );
+
+    setLogNumbers((prev) => [...prev, newGuess]);
     setCurrentGuess(newGuess);
   };
+
   return (
     <>
       <Title text="Opponent's Guess" />
