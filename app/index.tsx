@@ -17,7 +17,6 @@ export default function Index() {
 
   const gameOverHandler = () => {
     setIsGameOver(true);
-    setPickedNumber(undefined);
   };
 
   const restartHandler = () => {
@@ -26,13 +25,18 @@ export default function Index() {
   };
 
   let screen = <StartGameScreen onConfirmNumber={pickedNumberHandler} />;
-  if (pickedNumber) {
+  if (pickedNumber && !isGameOver) {
     screen = (
       <GameScreen userNumber={pickedNumber} onGameOver={gameOverHandler} />
     );
   }
   if (isGameOver) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        onRestart={restartHandler}
+        pickedNumber={pickedNumber as number}
+      />
+    );
   }
   return (
     <LinearGradient
@@ -45,7 +49,7 @@ export default function Index() {
         style={styles.rootScreen}
         imageStyle={styles.imageStyle}
       >
-        <SafeAreaView style={{alignItems:"center"}}>{screen}</SafeAreaView>
+        <SafeAreaView style={{ alignItems: "center" }}>{screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );

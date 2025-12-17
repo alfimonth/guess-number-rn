@@ -24,17 +24,19 @@ export default PrimaryButton;
 
 const styles = StyleSheet.create({
   outerButton: {
-    borderRadius: 99,
+    height: "100%",
     overflow: "hidden",
     flex: 1,
   },
 
   innerButton: {
+    borderRadius: 99,
     backgroundColor: "darkblue",
     paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
+    paddingHorizontal: 24,
   },
 
   pressed: {

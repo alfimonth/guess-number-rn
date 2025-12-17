@@ -1,6 +1,7 @@
 import Card from "@/components/Card";
 import Title from "@/components/MainTitle";
 import PrimaryButton from "@/components/PrimaryButton";
+import TipsText from "@/components/TipsText";
 import Colors from "@/constants/colors";
 import { generateRandomBetween } from "@/utils/number";
 import { Ionicons } from "@expo/vector-icons";
@@ -57,7 +58,7 @@ const GameScreen = ({
         <Text style={styles.guesText}>{currentGuess}</Text>
       </View>
       <Card>
-        <Text>Higher or Lower?</Text>
+        <TipsText>Higher or Lower?</TipsText>
         <View style={styles.bottomContainer}>
           <PrimaryButton
             onPress={() => {

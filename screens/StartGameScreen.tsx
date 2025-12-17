@@ -1,10 +1,11 @@
 import Card from "@/components/Card";
 import Title from "@/components/MainTitle";
 import PrimaryButton from "@/components/PrimaryButton";
+import TipsText from "@/components/TipsText";
 import Colors from "@/constants/colors";
 import { warningAlert } from "@/utils/alert";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 
 const StartGameScreen = ({
   onConfirmNumber,
@@ -51,7 +52,7 @@ const StartGameScreen = ({
     <>
       <Title text="Guess My Number" />
       <Card>
-        <Text>Input a number</Text>
+        <TipsText>Input a number</TipsText>
         <TextInput
           style={styles.numberInput}
           maxLength={2}
