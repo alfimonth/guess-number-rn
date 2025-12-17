@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+import Title from "@/components/MainTitle";
 import PrimaryButton from "@/components/PrimaryButton";
 import Colors from "@/constants/colors";
 import { warningAlert } from "@/utils/alert";
@@ -47,33 +48,39 @@ const StartGameScreen = ({
   };
 
   return (
-    <Card>
-      <Text>Input a number</Text>
-      <TextInput
-        style={styles.numberInput}
-        maxLength={2}
-        keyboardType="number-pad"
-        autoCapitalize="none"
-        autoCorrect={false}
-        value={enteredNumber}
-        onChangeText={setEnteredNumber}
-      />
-      <View style={styles.buttonContainer}>
-        <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
-        <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
-      </View>
-    </Card>
+    <View style={styles.mainContainer}>
+      <Title text="Guess My Number" />
+      <Card>
+        <Text>Input a number</Text>
+        <TextInput
+          style={styles.numberInput}
+          maxLength={2}
+          keyboardType="number-pad"
+          autoCapitalize="none"
+          autoCorrect={false}
+          value={enteredNumber}
+          onChangeText={setEnteredNumber}
+        />
+        <View style={styles.buttonContainer}>
+          <PrimaryButton onPress={resetHandler}>Reset</PrimaryButton>
+          <PrimaryButton onPress={confirmHandler}>Confirm</PrimaryButton>
+        </View>
+      </Card>
+    </View>
   );
 };
 
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    paddingHorizontal: 20,
+    alignItems: "center",
+  },
   buttonContainer: {
     flexDirection: "row",
     gap: 8,
   },
-
   numberInput: {
     color: Colors.secondary,
     fontSize: 32,

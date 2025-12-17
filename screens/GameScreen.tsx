@@ -1,5 +1,6 @@
 import Card from "@/components/Card";
 import PrimaryButton from "@/components/PrimaryButton";
+import Title from "@/components/MainTitle";
 import Colors from "@/constants/colors";
 import { generateRandomBetween } from "@/utils/number";
 import { Ionicons } from "@expo/vector-icons";
@@ -45,9 +46,7 @@ const GameScreen = ({ userNumber }: { userNumber: number }) => {
   };
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Opponent's Guess</Text>
-      </View>
+      <Title text="Opponent's Guess" />
       <View style={styles.guessContainer}>
         <Text style={styles.guesText}>{currentGuess}</Text>
       </View>
@@ -80,18 +79,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     paddingHorizontal: 20,
     alignItems: "center",
-  },
-  titleContainer: {
-    borderWidth: 1,
-    alignItems: "center",
-    paddingVertical: 4,
-    borderColor: Colors.white,
-    marginBottom: 20,
-    width: "100%",
-  },
-  title: {
-    fontSize: 32,
-    color: Colors.white,
   },
   guessContainer: {
     alignItems: "center",
