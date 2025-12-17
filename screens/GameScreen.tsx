@@ -2,6 +2,7 @@ import Card from "@/components/Card";
 import PrimaryButton from "@/components/PrimaryButton";
 import Colors from "@/constants/colors";
 import { generateRandomBetween } from "@/utils/number";
+import { Ionicons } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import { Alert, StyleSheet, Text, View } from "react-native";
 
@@ -58,14 +59,14 @@ const GameScreen = ({ userNumber }: { userNumber: number }) => {
               nextGuessHandler("lower");
             }}
           >
-            -
+            <Ionicons name="remove-outline" size={20} />
           </PrimaryButton>
           <PrimaryButton
             onPress={() => {
               nextGuessHandler("higher");
             }}
           >
-            +
+            <Ionicons name="add-outline" size={20} />
           </PrimaryButton>
         </View>
       </Card>
