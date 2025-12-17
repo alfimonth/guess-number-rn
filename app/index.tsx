@@ -45,7 +45,7 @@ export default function Index() {
         style={styles.rootScreen}
         imageStyle={styles.imageStyle}
       >
-        <SafeAreaView>{screen}</SafeAreaView>
+        <SafeAreaView style={{alignItems:"center"}}>{screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
   );

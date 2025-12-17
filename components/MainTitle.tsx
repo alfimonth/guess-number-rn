@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     alignItems: "center",
     paddingVertical: 4,
+    alignSelf: "stretch",
     borderColor: Colors.white,
     marginBottom: 32,
     marginHorizontal: 30,
