@@ -10,18 +10,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
   const [pickedNumber, setPickedNumber] = useState<number | undefined>();
   const [isGameOver, setIsGameOver] = useState<boolean>(false);
+  const [rounds, setRounds] = useState(0);
 
   const pickedNumberHandler = (number: number) => {
     setPickedNumber(number);
   };
 
-  const gameOverHandler = () => {
+  const gameOverHandler = (rounds: number) => {
     setIsGameOver(true);
+    setRounds(rounds);
   };
 
   const restartHandler = () => {
     setPickedNumber(undefined);
     setIsGameOver(false);
+    setRounds(0);
   };
 
   let screen = <StartGameScreen onConfirmNumber={pickedNumberHandler} />;
@@ -35,6 +38,7 @@ export default function Index() {
       <GameOverScreen
         onRestart={restartHandler}
         pickedNumber={pickedNumber as number}
+        rounds={rounds}
       />
     );
   }

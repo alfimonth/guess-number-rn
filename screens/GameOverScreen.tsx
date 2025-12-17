@@ -8,9 +8,11 @@ import { Image, StyleSheet, Text, View } from "react-native";
 const GameOverScreen = ({
   onRestart,
   pickedNumber,
+  rounds,
 }: {
   onRestart: () => void;
   pickedNumber: number;
+  rounds: number;
 }) => {
   return (
     <>
@@ -22,7 +24,7 @@ const GameOverScreen = ({
         />
       </View>
       <TipsText>
-        Your Phone needed <Text style={styles.highlightText}>{0}</Text> rounds
+        Your Phone needed <Text style={styles.highlightText}>{rounds}</Text> rounds
         {"\n"}to guess the number{" "}
         <Text style={styles.highlightText}>{pickedNumber}</Text>
       </TipsText>
